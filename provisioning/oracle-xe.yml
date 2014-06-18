@@ -20,8 +20,10 @@
     - name: configure oracle
       shell: /etc/init.d/oracle-xe configure responseFile=/vagrant/oracle/xe.rsp
       ignore_errors: True
-    - name: setup oracle environment
+    - name: setup oracle environment for vagrant user
       shell: /bin/echo 'source /u01/app/oracle/product/11.2.0/xe/bin/oracle_env.sh' >> /home/vagrant/.bash_profile
+    - name: setup oracle environment for root user
+      shell: /bin/echo 'source /u01/app/oracle/product/11.2.0/xe/bin/oracle_env.sh' >> /root/.bash_profile
     - name: stop ip tables
       shell: service iptables stop
     - name: set oracle listener
